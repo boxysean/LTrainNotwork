@@ -5,15 +5,27 @@
 1. Download our code
 2. Install `node` (supported version [0.4.12](https://github.com/joyent/node/zipball/v0.4.12)) and `npm` ([link](http://npmjs.org/))
 3. Within terminal, navigate to the code directory
-4. Install required packages using `npm install socket.io express yamlparser mysql-pool sprintf dateformat now underscore mysql`
-5. Launch using `node app.js`
-6. Open `http://localhost:3000`
+4. Install required packages using `npm install socket.io express yamlparser mysql-pool sprintf dateformat now underscore mysql jade`
+5. Add a config.yaml (see below)
+6. Launch using `node app.js`
+7. Open `http://localhost:3000`
+
+## Configuration file
+
+Our code uses an optional configuration file. 
 
 # file: config.yaml
+
+# mysql credentials
 mysqlUser: user
 mysqlPass: pass
+
+# added to mysql entries to easily combine multiple hardware tables
 hardwareId: mycomputer
+
+# use a simple basic access authentication
 authentication: false
+
 port: 3000
 # one of production or development
 mode: development

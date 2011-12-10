@@ -32,7 +32,9 @@ function basic_auth(req, res, next) {
 
     if (req.headers.authorization && req.headers.authorization.search('Basic ') === 0) {
         // fetch login and password
-        if (new Buffer(req.headers.authorization.split(' ')[1], 'base64').toString() == 'notwork:coolshit') {
+        var authUser = config.authUser;
+        var authPass = config.authPass;
+        if (new Buffer(req.headers.authorization.split(' ')[1], 'base64').toString() == authUser + ":" + authPass) {
             next();
             return;
         }
@@ -80,7 +82,7 @@ app.configure('production', function(){
 	app.use(function(req, res, next){
 		var hostname = req.header("host").split(":")[0];
 		if (hostname != "www.ltrainnotwork.com") {
-			res.redirect('http://www.ltrainnotwork.com/conductor');
+			res.redirect('http://www.ltrainnotwork.com');
 			return;
 		}
 
