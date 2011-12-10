@@ -2,9 +2,7 @@
 
 ## About
 
-We used this framework to serve content to mobile phones on the New York City subway.
-
-Every morning from Nov 14 to 18 (2011), the last few subway cars of the L train between on Morgan Ave and 8th Ave had a wireless access point that hosted this site with curated content.
+This framework was used to serve curated content to mobile devices on the New York City subway.
 
 More info can be found on [our press release](http://wemakecoolsh.it/#2300081/L-Train-Notwork-Press-Release), at [Wired](http://www.wired.com/epicenter/2011/11/all-aboard-nyc-geek-train/), or in [this video](http://vimeo.com/32149926).
 
