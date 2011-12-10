@@ -1,18 +1,30 @@
 # L Train Notwork
 
+## About
+
+We used this framework to serve content to mobile phones on the New York City subway.
+
+Every morning from Nov 14 to 18 (2011), the last few subway cars of the L train between on Morgan Ave and 8th Ave had a wireless access point that hosted this site with curated content.
+
+More info can be found on [our press release](http://wemakecoolsh.it/#2300081/L-Train-Notwork-Press-Release), at [Wired](http://www.wired.com/epicenter/2011/11/all-aboard-nyc-geek-train/), or in [this video](http://vimeo.com/32149926).
+
+Read our [technical documentation](https://github.com/boxysean/LTrainNotwork/blob/master/techdoc.md) including hardware configuration and specs.
+
+Take this model and deploy your very own notwork!
+
 ## Installation Instructions
 
-1. Download our code
+1. Grab code
 2. Install `node` (supported version [0.4.12](https://github.com/joyent/node/zipball/v0.4.12)) and `npm` ([link](http://npmjs.org/))
 3. Within terminal, navigate to the code directory
 4. Install required packages using `npm install socket.io express yamlparser mysql-pool sprintf dateformat now underscore mysql jade`
-5. Add a config.yaml (see below)
+5. Add config.yaml (see below)
 6. Launch using `node app.js`
 7. Open `http://localhost:3000`
 
-## Configuration File
+## config.yaml
 
-Our code uses an optional configuration file. Copy and paste this into config.yaml in your code directory.
+Copy and paste this into config.yaml in your code directory.
 
 	# file: config.yaml
 	
@@ -23,10 +35,12 @@ Our code uses an optional configuration file. Copy and paste this into config.ya
 	# added to mysql entries to easily combine multiple hardware tables
 	hardwareId: mycomputer
 	
-	# use a simple basic access authentication
+	# use a basic access authentication
 	authentication: false
+	authUser: user
+	authPass: password
 	
-	# node js webserver port
+	# node.js webserver port
 	port: 3000
 	
 	# node.js route used in app.js
@@ -35,18 +49,6 @@ Our code uses an optional configuration file. Copy and paste this into config.ya
 ## Launching with [forever](http://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever)
 
 Run using `./scripts/launch` from the command line.
-
-## About
-
-We used this framework to serve content to mobile phones on the New York City subway.
-
-Every morning from Nov 14 to 18 (2011), the last few subway cars of the L train between on Morgan Ave and 8th Ave had a wireless access point that hosted this site with curated content.
-
-More info can be found on [our press release](http://wemakecoolsh.it/#2300081/L-Train-Notwork-Press-Release), at [Wired](http://www.wired.com/epicenter/2011/11/all-aboard-nyc-geek-train/), or in [this video](http://vimeo.com/32149926).
-
-Read our technical documentation including hardware configuration and specs.
-
-Take this model and deploy your very own notwork!
 
 ## Troubleshooting
 

@@ -12,12 +12,12 @@ const yaml = require('yamlparser');
 			console.log("[WARNING] could not open", configFile, err);
 		}
 
-		this.mysqlUser = this.get(config, "mysqlUser", "root");
-		this.mysqlPass = this.get(config, "mysqlPass", "");
-		this.hardwareId = this.get(config, "hardwareId", "Xerxes");
+		this.mysqlUser = this.get(config, "mysqlUser", "mysqluser");
+		this.mysqlPass = this.get(config, "mysqlPass", "mysqlpass");
+		this.hardwareId = this.get(config, "hardwareId", "mycomputer");
 		this.authentication = this.get(config, "authentication", false);
-		this.authUser = this.get(config, "authUser", "notwork");
-		this.authPass = this.get(config, "authPass", "coolshit");
+		this.authUser = this.get(config, "authUser", "user");
+		this.authPass = this.get(config, "authPass", "pass");
 		this.port = this.get(config, "port", 3000);
 		this.mode = this.get(config, "mode", "development");
 
