@@ -1,0 +1,17 @@
+#
+#   Notwork text-based content descriptor file
+# 
+#   title:         title of content
+#   type:          story|poetry|ebook|news|audio|photo
+#   file:          location of file relative to this folder
+#   description:   description of content that appears in listings
+#   featured:      date upon which content appears on front page
+#
+
+title: Exactly What I'm Thinking
+type: poetry
+file: exactly-what-im-thinking.html
+description: by Jon Sands
+featured: "2011/11/14"
+order: 100
+

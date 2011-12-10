@@ -1,0 +1,15 @@
+#
+#   Notwork text-based content descriptor file
+# 
+#   title:  title of content
+#   type:   story|poetry|ebook|news
+#   file:   location of file relative to this folder
+#
+
+title: The Great Gatsby
+type: literature
+file: gatsby.html
+description: by F. Scott Fitzgerald
+featured: "2011/11/15"
+order: 1000
+

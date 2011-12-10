@@ -1,0 +1,15 @@
+#
+#   Notwork text-based content descriptor file
+# 
+#   title:  title of content
+#   type:   story|poetry|ebook|news
+#   file:   location of file relative to this folder
+#
+
+title: Bartleby, the Scrivener
+type: literature
+file: bartleby.html
+description: by Herman Melville
+featured: "2011/11/18"
+order: 1000
+

@@ -1,0 +1,42 @@
+extends layout
+
+block mainContent
+	#not-found(role='main', data-role='page')
+		div(data-role='header')
+			header.logo
+				a(href='/', rel='external')
+					h1 The L Train Notwork
+					
+		div(data-role='content')
+			h2 404
+			p Well, this is embarrassing.
+			p Send us a note and let us know what happened:
+			
+			form#user-response(action='/404-form')
+				textarea.required(name='feedback')
+				div
+					button submit
+
+			.success-msg.hide Thank you. Your input is awesome!
+			
+			p Or go back to the 
+				a(href='/', rel='external')
+					main page.
+			p Or go and look at 
+				a(href='#dirty', data-transition='fade') dirty picture.
+				
+	#dirty(data-role='page')
+		div(data-role='header')
+			header.logo
+				h1 404
+		div.content(data-role='content')
+	
+			div Go to the 
+				a(href='/', rel='external') main page.
+
+block PageScript
+	script
+		$(function(){
+			notwork.page.bindEvent();
+		});
+	

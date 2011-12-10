@@ -1,0 +1,208 @@
+!!! 5
+html
+	head
+		title='L Train Notwork'
+		meta(name='HandheldFriendly', content='True')
+		meta(name='MobileOptimized', content='320')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;')
+		meta (name='apple-mobile-web-app-capable' ,content='yes')
+		meta(http-equiv='cleartype', content='on')
+		link(rel='apple-touch-icon-precomposed', href='/img/l/apple-touch-icon-precomposed.png')
+		link(rel='stylesheet', href='/stylesheets/jquery.mobile-1.0rc2.css')
+		link(rel='stylesheet', href='/stylesheets/style.css?v=1')
+		script(src='/js/libs/spin.js')
+
+	#container
+		body		
+
+			#intro.page(data-role='page')
+				
+				div(data-role='header')
+					header.logo
+						h1 The L Train Notwork
+				
+				div(data-role='content')
+					p(style="margin-top:0;") Ever wonder what it would be like to control other people on the subway? Here's your chance to try. Pick two people, pick an action, and see what happens.
+					p <a href="#action" data-transition="flip">Try it!</a>
+					
+		
+				div.footer(data-role='footer')
+					div(data-role='navbar')
+						ul
+							li
+								a(href='#about') About
+							li
+								a(href='#contact') Contact Us 
+		
+			
+			
+			#action.page(data-role='page')
+				div(data-role='header')
+					header.logo
+						h1 The L Train Notwork
+		
+				div(data-role='content')
+					h2 Train Conductor
+					h3 Choose two characters
+
+					ul.conductor-user
+						li 
+							a
+								img(title="mark", src="img/conductor/mark.JPG")
+						li 
+							a
+								img(title="matt", src="img/conductor/matt.JPG")
+						li 
+							a
+								img(title="jackson", src="img/conductor/jackson.JPG")
+						li 
+							a
+								img(title="g g", src="img/conductor/gg.JPG")
+
+					h3 Choose an action
+
+					select.action(data-role="none",style="padding: 0.5em")
+						option(selected) Groom each other monkey style
+						option Long Distance Conversation About an Awkward Topic
+						option Slow Dance in the Aisle
+						option Freestyle rap together
+						option Yoga pose together
+						option Sing a Duet
+						option Long Awkward Hug
+						option Heated Debate About Something Ridiculous
+						option Trade Articles of Clothing
+						option Conversation in a Fake Language
+						option Polite Kiss
+						
+					h3 Have them do it!
+
+					div
+						button#send-action Go
+
+					br
+
+				div.footer(data-role='footer')
+					div(data-role='navbar')
+						ul
+							li
+								a(href='#about') About
+							li
+								a(href='#contact') Contact Us 
+		
+		
+			#message.page(data-role='page', data-transition="flip")
+				
+				div(data-role='header')
+					header.logo
+						a(href='#home')
+							h1 The L Train Notwork
+				
+				div.category-detail(data-role='content')
+					p Connecting mobile mind control. Please stand-by... <img src="img/spin.gif" />
+
+			#about.page(data-role='page')
+				
+				div(data-role='header')
+					header.logo
+						a(href='#home')
+							h1 The L Train Notwork
+				
+				div(data-role='content')
+					p Hello
+					p Welcome to the L Train Notwork brought to you by the creative collective WeMakeCoolSh.it. We make projects for Art and Commerce.
+					p We thought the subway would be more interesting with a mobile pirate WiFi intranet (a Notwork), so we made one. On our Notwork you will find a live chat room/dating site, curated content from local authors, poets, and visual artists, news feeds from popular sites, and a few other surprises. 
+					p Just to be clear THIS IS NOT THE REAL INTERNET so you won't be able to check your email or browse the web.
+					p The MTA is already hard at work with their plans to provide true internet access. In the meantime, please enjoy our little Notwork. 
+					p If you have any questions or comments you can reach us at: <a href="mailto:subway@wemakecoolsh.it">subway@wemakecoolsh.it</a>
+					div Sincerely
+					div Matt and Mark
+					div WeMakeCoolSh.it
+		
+					br
+					h2 Developers
+					ul.bio
+						li
+							.profile
+								h3 Sean McIntyre
+								img(src="img/authors/sean.png")
+								p Sean is Canadian, eats gluten-free, and used to be a figure skater. He lives in Brooklyn and attends ITP.
+								p
+									a(href="http://www.boxysean.com", title="Sean McIntyre's website")
+			
+						li
+							.profile
+								h3 Chee Seng Sim
+								img(src="img/authors/sim.jpg")
+								p Originally from Malaysia. He is a father, husband and front-end developer, currently living in Brooklyn. He will do whatever it takes to make you eat durian.
+								p
+									a(href="http://www.simmu.net", title="Chee Seng Sim's website")
+		
+						li
+							.profile
+								p Special thanks to James T and Zohbot.
+		
+					br
+		
+					h2 Designer
+					ul.bio
+						li
+							.profile
+								h3 Yoshi Sodeoka 
+								img(src="img/authors/yoshi.jpg")
+								p Yoshi Sodeoka is a multidisciplinary artist and musician based in New York City. Over the past decade, his projects have been exhibited across the world (London's Tate Britain, New York city's Deitch Projects, Stockholm's Galleri Jonas Kleerup, Paris' Festival Némo, Baltimore Museum of Art, Scope Art Fair, New York City, London's OneDotZero, Portland's Floating World Animation Fest, Boston's Lumen Eclipse, Barcelona's Sonar Festival, Haifa Museum Israel, San Sebastian's GlasKultur, The Creative Time Holiday Light Show at New York's Grand Central Terminal, Berlin's Transmediale, Poland's Krakow Film Festival, WNET Reel NY.). Sodeoka has received grants from the likes of the Greenwall foundation and his work is part of the permanent collections of the San Francisco MoMA and New York's Museum of the Moving Image.
+								p
+									a(href="http://www.sodeoka.com", title="Yoshi Sodeoka's website")
+		
+					br
+					
+					h2 WeMakeCoolSh.it
+					ul.bio
+						li
+							.profile
+								h3 Mark Krawczuk
+								img(src="img/authors/mark.png")
+								p Mark Krawczuk is a Producer / Project Manager who has worked in interactive for over 15 years for such companies as R/GA , Organic, Tribal DDB, Ogilvy, Disney, CNN and Adobe. Mark is also an active participant in several arts / cultural projects, many of which he can't talk about. The Lost Horizon Night Market is one of those projects.
+					
+						li 
+							.profile
+								h3 Matthew McGregor-Mento
+								img(src="img/authors/matt.jpg")
+								p Matthew McGregor-Mento is a creative geek who got his start coding his own Atari 800 games in BASIC in elementary school. Over the past 15 years, he's been a creative trailblazer for agencies such as C404, Ogilvy, Tribal, and Mr Youth, working on innovative social media, video, experiential, and kiosk-based interactive projects for clients like Pepsi, Sony, Philips, IBM, Nike, American Express, DHL, MoMA, LEGO and TiVO. Matt's work has been seen by millions of people on Youtube and in the permanent collection of the SFMoMA.
+		
+				div.footer(data-role='footer')
+					div(data-role='navbar')
+						ul
+							li
+								a.back(href='#', data-rel='back') Back
+		
+		
+		
+		
+		
+			
+			
+			#contact.page(data-role='page')
+				
+				div(data-role='header')
+					header.logo
+						a(href='#home')
+							h1 The L Train Notwork
+				
+				div(data-role='content')
+					.content
+						p You email us at <a href='mailto:subway@wemakecoolsh.it'>subway@wemakecoolsh.it</a>.
+			
+				div.footer(data-role='footer')
+					div(data-role='navbar')
+						ul
+							li
+								a.back(href='#', data-rel='back') Back
+
+								
+	script(src='/js/libs/jquery-1.6.4.min.js')
+	script(src='/js/libs/jquery.mobile-1.0rc2.min.js')
+	script(src='/js/conductor.js')
+	script
+		$(function(){
+			notwork.page.bindEvent();
+		});

@@ -1,0 +1,15 @@
+#
+#   Notwork text-based content descriptor file
+# 
+#   title:  title of content
+#   type:   story|poetry|ebook|news
+#   file:   location of file relative to this folder
+#
+
+title: Alice's Adventures in Wonderland
+type: literature
+file: alice-in-wonderland.html
+description: The classic tale by Lewis Carroll
+featured: "2011/11/14"
+order: 1000
+

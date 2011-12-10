@@ -1,0 +1,14 @@
+#
+#   Notwork text-based content descriptor file
+# 
+#   title:  title of content
+#   type:   story|poetry|ebook|news
+#   file:   location of file relative to this folder
+#
+
+title: Gothamist
+type: news
+file: gothamist.html
+headlineFile: gothamist-headlines.html
+description: News by New Yorkers for New Yorkers
+

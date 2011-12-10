@@ -1,0 +1,15 @@
+#
+#   Notwork text-based content descriptor file
+# 
+#   title:  title of content
+#   type:   story|poetry|ebook|news
+#   file:   location of file relative to this folder
+#
+
+title: The Time Machine
+type: literature
+file: timemachine.html
+description: by H.G. Wells
+featured: "2011/11/17"
+order: 1000
+

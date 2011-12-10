@@ -1,0 +1,2 @@
+$(document).bind("mobileinit", function () {
+});

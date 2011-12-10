@@ -1,0 +1,34 @@
+#!/bin/bash
+
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+
+pwd
+./compile
+
+cd ..
+
+APPNAME="app.js"
+
+# determine whether we are in production or development mode
+
+MODE=$(sed -n "s/mode:[ \t]*//p" config.yaml)
+if [[ ${#MODE} -gt 0 ]]; then
+	export NODE_ENV="$MODE"
+fi
+
+DATE=$(date +"%y%m%d")
+
+LOG="$APPNAME.$DATE.log"
+STDOUT="logs/out.$DATE.log"
+STDERR="logs/err.$DATE.log"
+
+mkdir -p logs
+
+if forever list | grep -q "$APPNAME"; then
+	forever stop $APPNAME
+fi
+
+forever start -a -l $LOG -o $STDOUT -e $STDERR $APPNAME
+
+echo complete
+

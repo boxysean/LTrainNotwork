@@ -1,0 +1,411 @@
+extends nozoom-layout
+
+block mainContent
+	#loading(data-role='page')
+		div(data-role='content') Loading...	
+		
+
+	#missed-connection.page(data-role='page')
+		div(data-role='header')
+			header.logo
+				a(href="/", rel="external")
+					h1 The L Train Notwork
+		
+		h2 MISSED CONNECTIONS
+		
+		p How many people on the subway would you talk to if you knew a little about them? Now you can find out a little more, chat and see what happens. Pick an icon, fill in a simple form, do a little searching, and chat. Or go to an open chat and talk to all sorts of folks...
+		
+		div(data-role='content')
+			form.join-chat-form(method="POST", action="/create-chat-user")
+				fieldset
+					strong Photo
+					div.field
+						label Choose your avatar
+						ul.avatar-list
+							li.selected
+								a(href="#", class="avatar man-1")
+							li
+								a(href="#", class="avatar man-2")
+							li
+								a(href="#", class="avatar man-3")
+							li
+								a(href="#", class="avatar female-1")
+							li
+								a(href="#", class="avatar female-2")
+							li
+								a(href="#", class="avatar female-3")
+							li
+								a(href="#", class="avatar cute-monster-1")
+							li
+								a(href="#", class="avatar cute-monster-2")
+							li
+								a(href="#", class="avatar cute-monster-3")
+							li
+								a(href="#", class="avatar scary-monster-1")
+							li
+								a(href="#", class="avatar scary-monster-2")
+							li
+								a(href="#", class="avatar scary-monster-3")
+						input.avatar(name="avatar", type="hidden", value="avatar man-1")
+
+					strong Question 
+					span (all are mandatory, but all have an option to be vague):
+					br
+
+					div.field I'm a
+						br
+						select(name="age", data-role='none')
+							option.initial age
+							option 20's
+							option 30's
+							option 40's
+							option 50's
+							option Older
+							option Other
+							option Epic
+							option.default -skip-
+
+						select(name="orientation", data-role='none')
+							option.initial orientation
+							option Straight
+							option Lesbian
+							option Gay
+							option Bisexual
+							option Transgender
+							option Questioning
+							option Queer
+							option Other
+							option Awesome
+							option.default -skip-
+
+						select(name="gender", data-role='none')
+							option.initial gender
+							option Man
+							option Woman
+							option Transitional
+							option Intersex
+							option Undecided
+							option Person
+							option Creature
+							option Lifeform
+							option Other
+							option.default -skip-
+
+					div.field I'm looking for 
+						select(name="interested", data-role='none')
+							option.initial select one
+							option.default friendly
+							option romance
+							option sexy
+						span chat.
+					
+					div.field When I say red, I mean:
+						br
+						select(name="question", data-role='none')
+							option.initial select one
+							option 630–740 nm
+							option #FF0000
+							option Fe2 O3
+							option 0%, 100%, 100%, 20%
+							option Roscolux #27
+							option 28,000 × 9,334 (28K) pixels
+							option rojo
+							option rouges
+							option czerwony
+							option meat
+							option wine
+							option just "red"
+							option.default -skip-
+
+					div.field My favorite sort of cake is
+						br
+						select(name="favcake", data-role='none')
+							option.initial select one
+							option red velvet
+							option carrot
+							option tarte tatin
+							option cheesecake
+							option jello
+							option hot cakes
+							option chocolate
+							option wedding
+							option vegan
+							option pie
+							option chocolate with fancy frosting
+							option yellow with chocolate frosting
+							option.default the cake is a lie!
+
+					div.field
+						label *Username (why not try something fun):
+						input.required(type="text", name="username", autocorrect="off", autocapitalize="off")
+
+					div.action
+						button submit
+
+
+		div.footer(data-role='footer')
+			div(data-role='navbar')
+				ul
+					li
+						a.back(href="/", rel="external") Back
+					li
+						a.back(href="/", rel="external") Home
+
+
+
+	#edit-profile.page(data-role='page')
+		
+		div(data-role='header')
+			header.logo
+				a(href="/", rel="external")
+					h1 The L Train Notwork
+		
+		h2 MISSED CONNECTIONS
+		
+		div(data-role='content')
+			form.join-chat-form(method="POST", action="/update-profile")
+				fieldset
+					strong Photo
+					div.field
+						label Choose your avatar
+						ul.avatar-list
+							li.selected
+								a(href="#", class="avatar man-1")
+							li
+								a(href="#", class="avatar man-2")
+							li
+								a(href="#", class="avatar man-3")
+							li
+								a(href="#", class="avatar female-1")
+							li
+								a(href="#", class="avatar female-2")
+							li
+								a(href="#", class="avatar female-3")
+							li
+								a(href="#", class="avatar cute-monster-1")
+							li
+								a(href="#", class="avatar cute-monster-2")
+							li
+								a(href="#", class="avatar cute-monster-3")
+							li
+								a(href="#", class="avatar scary-monster-1")
+							li
+								a(href="#", class="avatar scary-monster-2")
+							li
+								a(href="#", class="avatar scary-monster-3")
+						input.avatar(name="avatar", type="hidden", value="avatar man-1")
+						input#user-id(name="userid", type="hidden")
+					div.field I'm a
+						br
+						select#age(name="age", data-role='none')
+							option.initial age
+							option 20's
+							option 30's
+							option 40's
+							option 50's
+							option Older
+							option Other
+							option Epic
+							option.default -skip-
+
+						select#orientation(name="orientation", data-role='none')
+							option.initial orientation
+							option Straight
+							option Lesbian
+							option Gay
+							option Bisexual
+							option Transgender
+							option Questioning
+							option Queer
+							option Other
+							option Awesome
+							option.default -skip-
+
+						select#gender(name="gender", data-role='none')
+							option.initial gender
+							option Man
+							option Woman
+							option Transitional
+							option Intersex
+							option Undecided
+							option Person
+							option Creature
+							option Lifeform
+							option Other
+							option.default -skip-
+
+					div.field I'm looking for 
+						select#interested(name="interested", data-role='none')
+							option.initial select one
+							option.default friendly
+							option romance
+							option sexy
+						span chat.
+
+					div.field When I say red, I mean:
+						br
+						select#question(name="question", data-role='none')
+							option.initial select one
+							option 630–740 nm
+							option #FF0000
+							option Fe2 O3
+							option 0%, 100%, 100%, 20%
+							option Roscolux #27
+							option 28,000 × 9,334 (28K) pixels
+							option rojo
+							option rouges
+							option czerwony
+							option meat
+							option wine
+							option just "red"
+							option.default -skip-
+
+					div.field My favorite sort of cake is
+						br
+						select(name="favcake", data-role='none')
+							option.initial select one
+							option red velvet
+							option carrot
+							option tarte tatin
+							option cheesecake
+							option jello
+							option hot cakes
+							option chocolate
+							option wedding
+							option vegan
+							option pie
+							option chocolate with fancy frosting
+							option yellow with chocolate frosting
+							option.default the cake is a lie!
+
+					input#username(type="hidden", name="username")
+
+					div.action
+						button submit
+
+
+		div.footer(data-role='footer')
+
+
+	#user-detail.page(data-role='page',  data-transition="pop")
+		div(data-role='header')
+			header.logo
+				a(href="/", rel="external")
+					h1 The L Train Notwork
+		
+		div(data-role='content')
+			.info
+				h2 Awesmoe man
+				span(href="#", class="avatar man-1")
+				p I'm a 20s Awesome Man. When I say red, I mean 630-740 nm. I'm looking for friendly chat. My favorite sort of cake is pie.
+				p 
+					a(href='#') Request Chat
+
+		div.footer(data-role='footer')
+			div(data-role='navbar')
+
+				ul
+					li
+						a.back(href='#', data-rel='back') Back
+					li
+						a.back(href="/", rel="external") Home
+
+
+
+	#chat-list.page(data-role='page')
+		
+		div(data-role='header')
+			header.logo
+				a(href="/", rel="external")
+					h1 The L Train Notwork
+	
+		div(data-role='content')
+		
+			#my-profile
+		
+			
+			strong 
+				a.open-chat(href="#") PUBLIC CHAT
+			.total-people
+			
+			p.total-private-user 
+				
+			ul.chat-list
+						
+		div.footer(data-role='footer')
+			div(data-role='navbar')
+				ul
+					li
+						a.back(href="/", rel="external") Home
+
+
+	#chat.page(data-role='page')
+		
+		div(data-role='header')
+			header.logo
+				a(href="/", rel="external")
+					h1 The L Train Notwork
+		
+		div(data-role='content')
+			.room-message
+			ul.chat-messages
+			form
+				fieldset
+					div.field
+						textarea.message(autocorrect="on", autocapitalize="off")
+					did.action.group
+						label.left 
+							input#turn-off-private(type='checkbox', data-role='none')
+							span Turn off private chat.
+						button#send-button submit
+						
+		div.footer(data-role='footer')
+			div(data-role='navbar')
+				ul
+					li
+						a.back(href='#', data-rel='back') Back To Chat List
+
+	#private-chat.page(data-role='page')
+		
+		div(data-role='header')
+			header.logo
+				a(href="/", rel="external")
+					h1 The L Train Notwork
+		
+		div(data-role='content')
+			.room-message
+			ul.chat-messages
+			form
+				fieldset
+					div.field
+						textarea.message(autocorrect="on", autocapitalize="off")
+					did.action
+						button#send-button submit
+						
+		div.footer(data-role='footer')
+			div(data-role='navbar')
+				ul
+					li
+						a.leave-chat(href='#') Leave This Chat						
+
+	
+						
+						
+						
+block PageScript
+	script(src="/nowjs/now.js")
+	script
+
+		now.connected = function(){
+			if(!utils.readCookie("notworkUser")){
+				$.mobile.changePage("#missed-connection");
+			}
+		};
+		now.getTotalPublicChatUser = function(total){	
+			var msg = '('+total + ' total people are using the system.)';
+			if(total == 1){
+				msg = '('+total + ' person are using the system.)';
+			}
+			$(".total-people").text(msg);
+		}
+		notwork.app.initMissConnection();

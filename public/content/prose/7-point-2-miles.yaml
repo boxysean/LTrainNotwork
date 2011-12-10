@@ -1,0 +1,17 @@
+#
+#   Notwork text-based content descriptor file
+# 
+#   title:         title of content
+#   type:          story|poetry|ebook|news|audio|photo
+#   file:          location of file relative to this folder
+#   description:   description of content that appears in listings
+#   featured:      date upon which content appears on front page
+#
+
+title: "7.2 Miles"
+type: prose 
+file: 7-point-2-miles.html
+description: by Robin Grearson
+featured: "2011/11/18"
+order: 300
+
