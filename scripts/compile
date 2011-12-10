@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd "$( dirname "${BASH_SOURCE[0]}" )"
-cd ../node_modules/now/node_modules/node-proxy && make

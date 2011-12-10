@@ -2,9 +2,8 @@ logs
 scripts/usage-stats/reports
 config.yaml
 
-node_modules/now/node_modules/node-proxy/src/build/
-node_modules/now/node_modules/node-proxy/src/.lock-wscript
-node_modules/now/node_modules/node-proxy/lib/node-proxy.node
+node_modules
+npm-debug.log
 
 scripts/content-gen/bin
 scripts/content-gen/news

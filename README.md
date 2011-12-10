@@ -2,9 +2,11 @@
 
 ## Installation instructions
 
-1. Compile using `make`
-2. Launch using `node app.js`
-3. Open `http://localhost:8080`
+1. Download our code
+2. Install `node` (supported version [0.4.12](https://github.com/joyent/node/zipball/v0.4.12)) and `npm`
+3. Install required packages using `npm socket.io express yamlparser mysql-pool sprintf dateformat now`
+4. Launch using `node app.js`
+5. Open `http://localhost:8080`
 
 ## Launching with [forever](http://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever)
 
@@ -38,7 +40,34 @@ Take this model and deploy your very own notwork!
 	    at require (module.js:355:19)
 	    at Object.<anonymous> (/Users/boxysean/Documents/workspace/notwork/node_modules/now/lib/group.js:3:13)
 
-### A: Run `make`.
+*A:* Run `make`.
+
+### Q: Why do I get the following error when installing packages via npm?
+
+	npm ERR! node-proxy@0.5.2 install: `make`
+	npm ERR! `sh "-c" "make"` failed with 2
+	npm ERR! 
+	npm ERR! Failed at the node-proxy@0.5.2 install script.
+	npm ERR! This is most likely a problem with the node-proxy package,
+	npm ERR! not with npm itself.
+	npm ERR! Tell the author that this fails on your system:
+	npm ERR!     make
+	npm ERR! You can get their info via:
+	npm ERR!     npm owner ls node-proxy
+	npm ERR! There is likely additional logging output above.
+	npm ERR! 
+	npm ERR! System Linux 3.0.0-13-generic
+	npm ERR! command "node" "/usr/bin/npm" "install" "now"
+	npm ERR! cwd /mnt/br/boxysean/workspace/notwork_github
+	npm ERR! node -v v0.4.12
+	npm ERR! npm -v 1.0.94
+	npm ERR! code ELIFECYCLE
+	npm ERR! 
+	npm ERR! Additional logging details can be found in:
+	npm ERR!     /mnt/br/boxysean/workspace/notwork_github/npm-debug.log
+	npm not ok
+
+*A:* This is probably because you are missing node-waf. [More...](http://stackoverflow.com/a/8303324)
 
 ## Credits
 
