@@ -4,19 +4,19 @@
 
 <ol>
 <li>Hardware</li>
-<ol>
+<ol start="a">
 <li>Goals</li>
 <li>Computers</li>
 <li>Routers</li>
 <li>Batteries and Inverters</li>
 </ol>
 <li>Hardware Configuration</li>
-<ol>
+<ol start="a">
 <li>Goals</li>
 <li>Implementation</li>
 </ol>
 <li>Software</li>
-<ol>
+<ol start="a">
 <li>Goals</li>
 <li>Node.js</li>
 <li>Front-end</li>

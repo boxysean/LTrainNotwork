@@ -15,7 +15,7 @@ const yaml = require('yamlparser');
 		this.mysqlUser = this.get(config, "mysqlUser", "root");
 		this.mysqlPass = this.get(config, "mysqlPass", "");
 		this.hardwareId = this.get(config, "hardwareId", "Xerxes");
-		this.authentication = this.get(config, "authentication", true);
+		this.authentication = this.get(config, "authentication", false);
 		this.port = this.get(config, "port", 3000);
 		this.mode = this.get(config, "mode", "development");
 

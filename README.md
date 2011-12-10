@@ -7,7 +7,17 @@
 3. Within terminal, navigate to the code directory
 4. Install required packages using `npm install socket.io express yamlparser mysql-pool sprintf dateformat now underscore mysql`
 5. Launch using `node app.js`
-6. Open `http://localhost:8080`
+6. Open `http://localhost:3000`
+
+# file: config.yaml
+mysqlUser: user
+mysqlPass: pass
+hardwareId: mycomputer
+authentication: false
+port: 3000
+# one of production or development
+mode: development
+
 
 ## Launching with [forever](http://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever)
 
