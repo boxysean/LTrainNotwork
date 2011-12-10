@@ -3,10 +3,11 @@
 ## Installation instructions
 
 1. Download our code
-2. Install `node` (supported version [0.4.12](https://github.com/joyent/node/zipball/v0.4.12)) and `npm`
-3. Install required packages using `npm socket.io express yamlparser mysql-pool sprintf dateformat now`
-4. Launch using `node app.js`
-5. Open `http://localhost:8080`
+2. Install `node` (supported version [0.4.12](https://github.com/joyent/node/zipball/v0.4.12)) and `npm` ([link](http://npmjs.org/))
+3. Within terminal, navigate to the code directory
+4. Install required packages using `npm install socket.io express yamlparser mysql-pool sprintf dateformat now underscore mysql`
+5. Launch using `node app.js`
+6. Open `http://localhost:8080`
 
 ## Launching with [forever](http://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever)
 
@@ -40,7 +41,7 @@ Take this model and deploy your very own notwork!
 	    at require (module.js:355:19)
 	    at Object.<anonymous> (/Users/boxysean/Documents/workspace/notwork/node_modules/now/lib/group.js:3:13)
 
-*A:* Run `make`.
+**A:** Run `make`.
 
 ### Q: Why do I get the following error when installing packages via npm?
 
@@ -67,7 +68,11 @@ Take this model and deploy your very own notwork!
 	npm ERR!     /mnt/br/boxysean/workspace/notwork_github/npm-debug.log
 	npm not ok
 
-*A:* This is probably because you are missing node-waf. [More...](http://stackoverflow.com/a/8303324)
+**A:** This is probably because you are missing node-waf. [More...](http://stackoverflow.com/a/8303324)
+
+### Q: Node install says I'm missing openssl. What should I do?
+
+**A:** Install openssl libraries by doing `sudo apt-get install libssl-dev` in Debian (Ubuntu) or through [Ports](http://www.macports.com) in OS X.
 
 ## Credits
 

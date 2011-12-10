@@ -1,16 +1,36 @@
-## Hardware
+# L Train Notwork Technical Documentation
 
-### Goals
+## 0. Table of Contents
+
+1. Hardware
+   a. Goals
+   b. Computers
+   c. Routers
+   d. Batteries and Inverters
+2. Hardware Configuration
+   a. Goals
+   b. Implementation
+3. Software
+   a. Goals
+   b. Node.js
+   c. Front-end
+   d. Back-end
+   e. News Feeds
+   f. User Statistics
+
+## 1. Hardware
+
+### a. Goals
 
 - Many people connected at once across half the train
 - Run during morning rush hour on every train between Morgan Ave and 8th Ave stations
 - Package the device in a neat fashion, so they are self contained and easy to work with
 
-### Computers
+### b. Computers
 
 We looked at the GuruPlug Server and DreamPlug as our computer options. We acquired one of each to play with early in the project. Their key hardware features are identical:
 
-<table cellpadding=2>
+<table>
   <tr>
     <th>Computer</th>
     <th>GuruPlug Server</th>
@@ -49,7 +69,7 @@ One key feature we originally intended to rely upon was the WiFi capabilities of
 
 On a Saturday, two days before the launch, we held a 10 person test. There we learned that the GuruPlug has a hard limit of 8 max simultaneous connections. (Oops.) So we did some research and quick experiments and decided to add a wireless router to each package.
 
-### Routers
+### c. Routers
 
 The advantage of using the GuruPlug as the router was that we could run dnsmasq directly on the router. We configured dnsmasq to resolve every address to localhost (except apple.com, which was resolved to 0.0.0.0 to prevent iPhone oddities). In this configuration every web request was redirected to and handled by the GuruPlug. Therefore requests for google.com (or any other site) would return headers redirecting the web browser to ltrainnotwork.com (our intranet hostname) and displaying our intercept page.
 
@@ -68,7 +88,7 @@ The maximum connections configuration limitation was resolved by adding the rout
 
 Since we ran OpenWRT, we had access to radio transmission power configuration options and maxed it.
 
-### Batteries and Inverters
+### d. Batteries and Inverters
 
 The batteries purchased were 12V 5AH Rechargeable Sealed Lead Acid Battery ([Amazon](http://www.amazon.com/dp/B000WSIR14/ref=cm_sw_su_dp)).
 
@@ -80,11 +100,13 @@ To recharge the batteries, we also used the  Yuasa 12 Volt Smart Shot 900 Batter
 
 We also used Split Loom Tubing ([Amazon](http://www.amazon.com/dp/B0017686ZC/ref=cm_sw_su_dp)) for cable management.
 
-## Hardware Configuration
+## 2. Hardware Configuration
 
-### Goals
+### a. Goals
 
 - Make it as easy as possible to launch, update, extract data, and fix bugs
+
+### b. Implementation
 
 Since we had a 12 computers deployed and one technician, it was vital to streamline the process of updating code and content, extracting data, and fixing bugs on the computers. We used an online web server as a master server that the computers polled for new launch execution scripts each time the computers were booted. Thus the process of updating, extracting, and fixing bugs simply was
 
@@ -137,107 +159,107 @@ The server deployment setup.sh script:
 
 The script:
 
-        # file: setup.sh
+    # file: setup.sh
 
-        echo "### starting boot process"
-        
-        ID=$(grep "computer:" /home/user/about | cut -d " " -f2)
-        IP=$(grep "ip:" /home/user/about | cut -d " " -f2)
-        
-        echo "### ID $ID IP $IP"
-        
-        INTERNET=$(/home/user/internet.sh)
-        
-        if [[ $INTERNET -eq 1 ]]; then
-            echo "there is internet"
-        else
-            echo "there is no internet"
-        fi
-        
-        echo "### launching loopback and mysql"
-        
-        ifconfig lo up
-        /etc/init.d/mysql start
-        
-        # We always bootup in AP mode. Delete any stale files
-        rm -f /etc/wlanclient.mode
-        #SSID=Plug2-uAP-`ifconfig eth0 | awk -F ":" '/HWaddr/ {print $6$7}'`
-        
-        if [[ $INTERNET -eq 1 ]]; then
-            SSID="L Train Notwork $ID wI"
-        else
-            SSID="L Train Notwork $ID"
-        fi
-        
-        insmod /root/uap8xxx.ko
-        #ifconfig uap0 192.168.1.1 up
-        /usr/bin/uaputl sys_cfg_ssid "$SSID"
-        /usr/bin/uaputl sys_cfg_tx_power 20
-        #/usr/bin/uaputl bss_start
-        /usr/bin/uaputl bss_stop
-        iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-        iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
-        echo 1 > /proc/sys/net/ipv4/ip_forward
-        /etc/init.d/udhcpd start
-        /etc/init.d/dnsmasq stop
-        #dnsmasq -z -2 -i uap0 -a 192.168.1.1 --address=/\#/192.168.1.1 --address=/apple.com/0.0.0.0
-        iptables -A INPUT -i uap0 -p tcp -m tcp --dport 80 -j ACCEPT
+    echo "### starting boot process"
+    
+    ID=$(grep "computer:" /home/user/about | cut -d " " -f2)
+    IP=$(grep "ip:" /home/user/about | cut -d " " -f2)
+    
+    echo "### ID $ID IP $IP"
+    
+    INTERNET=$(/home/user/internet.sh)
+    
+    if [[ $INTERNET -eq 1 ]]; then
+        echo "there is internet"
+    else
+        echo "there is no internet"
+    fi
+    
+    echo "### launching loopback and mysql"
+    
+    ifconfig lo up
+    /etc/init.d/mysql start
+    
+    # We always bootup in AP mode. Delete any stale files
+    rm -f /etc/wlanclient.mode
+    #SSID=Plug2-uAP-`ifconfig eth0 | awk -F ":" '/HWaddr/ {print $6$7}'`
+    
+    if [[ $INTERNET -eq 1 ]]; then
+        SSID="L Train Notwork $ID wI"
+    else
+        SSID="L Train Notwork $ID"
+    fi
+    
+    insmod /root/uap8xxx.ko
+    #ifconfig uap0 192.168.1.1 up
+    /usr/bin/uaputl sys_cfg_ssid "$SSID"
+    /usr/bin/uaputl sys_cfg_tx_power 20
+    #/usr/bin/uaputl bss_start
+    /usr/bin/uaputl bss_stop
+    iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+    iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+    echo 1 > /proc/sys/net/ipv4/ip_forward
+    /etc/init.d/udhcpd start
+    /etc/init.d/dnsmasq stop
+    #dnsmasq -z -2 -i uap0 -a 192.168.1.1 --address=/\#/192.168.1.1 --address=/apple.com/0.0.0.0
+    iptables -A INPUT -i uap0 -p tcp -m tcp --dport 80 -j ACCEPT
 
-        # Re-enable bluetooth. In the earlier case, it didn't find the firmware.
-        #rmmod libertas_sdio libertas btmrvl_sdio btmrvl bluetooth 2>/dev/null
-        #rmmod btmrvl_sdio btmrvl
-        #/etc/init.d/bluetooth start
+    # Re-enable bluetooth. In the earlier case, it didn't find the firmware.
+    #rmmod libertas_sdio libertas btmrvl_sdio btmrvl bluetooth 2>/dev/null
+    #rmmod btmrvl_sdio btmrvl
+    #/etc/init.d/bluetooth start
 
-        #modprobe btmrvl_sdio
-        #hciconfig hci0 up
-        #hciconfig hci0 piscan
-        #/usr/bin/mute-agent &
+    #modprobe btmrvl_sdio
+    #hciconfig hci0 up
+    #hciconfig hci0 piscan
+    #/usr/bin/mute-agent &
 
-        # Set leds
-        echo 1 > `eval ls /sys/class/leds/*plug*\:green\:health/brightness`
-        echo 1 > `eval ls /sys/class/leds/*plug*\:green\:wmode/brightness`
-        
-        # stop lighttpd
-        echo "stopping lighttpd"
-        sudo /etc/init.d/lighttpd stop
+    # Set leds
+    echo 1 > `eval ls /sys/class/leds/*plug*\:green\:health/brightness`
+    echo 1 > `eval ls /sys/class/leds/*plug*\:green\:wmode/brightness`
+    
+    # stop lighttpd
+    echo "stopping lighttpd"
+    sudo /etc/init.d/lighttpd stop
 
-        # start notwork
-        echo "launching node"
-        cd /home/user/workspace/notwork
-        
-        if [[ $INTERNET -eq 1 ]]; then
-            ./scripts/update
-        fi
-        
-        echo "### make config file"
+    # start notwork
+    echo "launching node"
+    cd /home/user/workspace/notwork
+    
+    if [[ $INTERNET -eq 1 ]]; then
+        ./scripts/update
+    fi
+    
+    echo "### make config file"
 
-        cat <<EOD > /home/user/workspace/notwork/config.yaml
-        mysqlUser: mysqluser
-        mysqlPass: mysqlpass
-        hardwareId: "notwork$ID"
-        authentication: false
-        port: 80
-        mode: production
-        EOD
-        
-        ./scripts/launch
-        ps alx | grep node
-        
-        echo "### config.yaml"
-        cat /home/user/workspace/notwork/config.yaml
-        
-        # diagnostics
-        df -h
-        ifconfig
-        
-        # rsync all syslog and runtime logs to master server
-        if [[ $INTERNET -eq 1 ]]; then
-                rsync /var/log/syslog* user@masterserver.com:/home/user/notwork/notwork$ID/
-                rsync /home/user/notwork/logs/* user@masterserver.com:/home/user/notwork/notwork$ID/
-                echo "sent logs to mothership"
-        fi
-        
-        echo "boot process complete"
+    cat <<EOD > /home/user/workspace/notwork/config.yaml
+    mysqlUser: mysqluser
+    mysqlPass: mysqlpass
+    hardwareId: "notwork$ID"
+    authentication: false
+    port: 80
+    mode: production
+    EOD
+    
+    ./scripts/launch
+    ps alx | grep node
+    
+    echo "### config.yaml"
+    cat /home/user/workspace/notwork/config.yaml
+    
+    # diagnostics
+    df -h
+    ifconfig
+    
+    # rsync all syslog and runtime logs to master server
+    if [[ $INTERNET -eq 1 ]]; then
+            rsync /var/log/syslog* user@masterserver.com:/home/user/notwork/notwork$ID/
+            rsync /home/user/notwork/logs/* user@masterserver.com:/home/user/notwork/notwork$ID/
+            echo "sent logs to mothership"
+    fi
+    
+    echo "boot process complete"
 
 The data extraction setup.sh script:
 
@@ -246,42 +268,42 @@ The data extraction setup.sh script:
 
 The script:
 
-        # file: setup.sh
-        
-        # This is called from /etc/rc.local to perform the initial setup.
-        
-        echo "### launch mysql"
-        
-        ifconfig lo up
-        /etc/init.d/mysql start
-        
-        echo "### starting mysql process"
-        
-        ID=$(grep "computer:" /home/user/about | cut -d " " -f2)
-        IP=$(grep "ip:" /home/user/about | cut -d " " -f2)
-        
-        echo "### ID $ID IP $IP"
-        
-        INTERNET=$(/home/user/internet.sh)
-        
-        if [[ $INTERNET -eq 1 ]]; then
-                echo "### sending mysql"
-                mysqldump -umysqluser -pmysqlpass notwork_db | grep -v "PRIMARY" | grep -v "DROP TABLE" | sed "s/auto_increment//" | sed "s/CREATE TABLE/CREATE TABLE IF NOT EXISTS/" | sed "s/\(  \`text\` tinytext NOT NULL\),/\1/" | sed "s/\(  \`title\` varchar(255) NOT NULL\),/\1/" | sed "s/\(  \`message\` text NOT NULL\),/\1/" | sed "s/\(  \`feedback\` text NOT NULL\),/\1/" | sed "s/\(  \`contentId\` int(11) NOT NULL\),/\1/" | sed "s/\(  \`username\` varchar(255) NOT NULL\),/\1/" | ssh user@masterserver.com "cat - > /home/user/notwork/mysql/$ID.dump"
-        else
-                echo "### no internets"
-        fi
-        
-        echo "### mysql process complete"
+    # file: setup.sh
+    
+    # This is called from /etc/rc.local to perform the initial setup.
+    
+    echo "### launch mysql"
+    
+    ifconfig lo up
+    /etc/init.d/mysql start
+    
+    echo "### starting mysql process"
+    
+    ID=$(grep "computer:" /home/user/about | cut -d " " -f2)
+    IP=$(grep "ip:" /home/user/about | cut -d " " -f2)
+    
+    echo "### ID $ID IP $IP"
+    
+    INTERNET=$(/home/user/internet.sh)
+    
+    if [[ $INTERNET -eq 1 ]]; then
+            echo "### sending mysql"
+            mysqldump -umysqluser -pmysqlpass notwork_db | grep -v "PRIMARY" | grep -v "DROP TABLE" | sed "s/auto_increment//" | sed "s/CREATE TABLE/CREATE TABLE IF NOT EXISTS/" | sed "s/\(  \`text\` tinytext NOT NULL\),/\1/" | sed "s/\(  \`title\` varchar(255) NOT NULL\),/\1/" | sed "s/\(  \`message\` text NOT NULL\),/\1/" | sed "s/\(  \`feedback\` text NOT NULL\),/\1/" | sed "s/\(  \`contentId\` int(11) NOT NULL\),/\1/" | sed "s/\(  \`username\` varchar(255) NOT NULL\),/\1/" | ssh user@masterserver.com "cat - > /home/user/notwork/mysql/$ID.dump"
+    else
+            echo "### no internets"
+    fi
+    
+    echo "### mysql process complete"
 
-## Software
+## 3. Software
 
-### Goals
+### a. Goals
 
 - 'App-like' interface with interesting content and interactive applications
 - Provide up-to-date news from popular sources
 - Compile information and generate statistics about daily usage patterns
 
-### Node.js
+### b. Node.js
 
 We decided to use Node.js with express as our model-view-controller (MVC) for a few reasons:
 
@@ -296,7 +318,7 @@ We chose this approach over using an existing content management system (CMS) be
 - we had unique requirements for interactive apps, and these could be built in directly to the express framework, and
 - our content was static so we didn't require the sophistication of a CMS.
 
-### Front-end
+### c. Front-end
 
 We used a variety of methods to make the front-end experience feel fast. One standard way we did this was using [JQueryMobile](http://jquerymobile.com/) to facilitate what appear to be page transfers within the same document.
 
@@ -304,11 +326,11 @@ User content requests and content list requests are made using AJAX calls. When 
 
 Since one of our content areas was visual arts (and xkcd!), we sought a great photo gallery library and found one in [PhotoSwipe](http://www.photoswipe.com/) because of its great native app look and feel.
 
-### Back-end
+### d. Back-end
 
 We kept the content in structured folders with meta content files. The file structure is expected by parsers in order to translate to the front-end structure. The parsers run at web server launch to precompute JSON responses to content list requests.
 
-### News Feeds
+### e. News Feeds
 
 We decided the best free and legal way to provide up-to-date news was via RSS feed headlines. Most websites declare in their terms of services that the content of RSS may be freely distributed.
 
@@ -337,7 +359,7 @@ The most popular RSS feeds contain a few methods of logging hits. We removed the
 
 Some feeds were special. For example, we expanded upon a bash script we found online that downloads xkcd comics and inserts the image title underneath. Also our Explore github feed was a scrape of the online [Explore github](https://github.com/explore) page.
 
-### User Statistics
+### f. User Statistics
 
 We logged calls to our server for the purpose of generating user statistics, use cases, and understanding how the system was being used.
 
