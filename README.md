@@ -1,6 +1,6 @@
 # L Train Notwork
 
-## Installation instructions
+## Installation Instructions
 
 1. Download our code
 2. Install `node` (supported version [0.4.12](https://github.com/joyent/node/zipball/v0.4.12)) and `npm` ([link](http://npmjs.org/))
@@ -10,26 +10,27 @@
 6. Launch using `node app.js`
 7. Open `http://localhost:3000`
 
-## Configuration file
+## Configuration File
 
-Our code uses an optional configuration file. 
+Our code uses an optional configuration file. Copy and paste this into config.yaml in your code directory.
 
-# file: config.yaml
-
-# mysql credentials
-mysqlUser: user
-mysqlPass: pass
-
-# added to mysql entries to easily combine multiple hardware tables
-hardwareId: mycomputer
-
-# use a simple basic access authentication
-authentication: false
-
-port: 3000
-# one of production or development
-mode: development
-
+	# file: config.yaml
+	
+	# mysql credentials
+	mysqlUser: user
+	mysqlPass: pass
+	
+	# added to mysql entries to easily combine multiple hardware tables
+	hardwareId: mycomputer
+	
+	# use a simple basic access authentication
+	authentication: false
+	
+	# node js webserver port
+	port: 3000
+	
+	# node.js route used in app.js
+	mode: development
 
 ## Launching with [forever](http://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever)
 
