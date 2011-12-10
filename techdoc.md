@@ -2,21 +2,29 @@
 
 ## 0. Table of Contents
 
-1. Hardware
-   a. Goals
-   b. Computers
-   c. Routers
-   d. Batteries and Inverters
-2. Hardware Configuration
-   a. Goals
-   b. Implementation
-3. Software
-   a. Goals
-   b. Node.js
-   c. Front-end
-   d. Back-end
-   e. News Feeds
-   f. User Statistics
+<ol>
+<li>Hardware</li>
+<ol>
+<li>Goals</li>
+<li>Computers</li>
+<li>Routers</li>
+<li>Batteries and Inverters</li>
+</ol>
+<li>Hardware Configuration</li>
+<ol>
+<li>Goals</li>
+<li>Implementation</li>
+</ol>
+<li>Software</li>
+<ol>
+<li>Goals</li>
+<li>Node.js</li>
+<li>Front-end</li>
+<li>Back-end</li>
+<li>News Feeds</li>
+<li>User Statistics</li>
+</ol>
+</ol>
 
 ## 1. Hardware
 
