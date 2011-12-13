@@ -83,7 +83,7 @@ The advantage of using the GuruPlug as the router was that we could run dnsmasq 
 
 We tried a variety of routers (Cisco, D-Link, Netgear) to see if we could find a standard firmware configuration that ultimately sent the user redirect headers for unexpected hostnames. Unfortunately we could not find a working configuration, so we started to look at DD-WRT and OpenWRT solutions. We did not have experience with these before, but we knew that *WRT projects were distributions of *nix that could run dnsmasq.
 
-We decided to buy Netgear WNDR3700 (rev 2) routers on our friend [Dan Phiffer](http://www.google.com/url?q=http%3A%2F%2Fphiffer.org%2F&sa=D&sntz=1&usg=AFQjCNFLEVKBoQpVDrYAMGlQodR56ktUZg)'s suggestion. These routers were widely available at Staples and BestBuy and were simple to flash OpenWRT onto the device via the web interface. We also could think of other uses after the Notwork for this beefy router.
+We decided to buy Netgear WNDR3700 (rev 2) routers on our friend [Dan Phiffer](http://phiffer.org/)'s suggestion. These routers were widely available at Staples and BestBuy and were simple to flash OpenWRT onto the device via the web interface. We also could think of other uses after the Notwork for this beefy router.
 
 Each WNDR3700 was paired with a GuruPlug and ran dnsmasq to resolve all DNS requests to the GuruPlug's IP (each had a unique static IP).
 
