@@ -6,7 +6,7 @@ This framework was used to serve curated content to mobile devices on the New Yo
 
 More info can be found on [our press release](http://wemakecoolsh.it/#2300081/L-Train-Notwork-Press-Release), at [Wired](http://www.wired.com/epicenter/2011/11/all-aboard-nyc-geek-train/), or in [this video](http://vimeo.com/32149926).
 
-Read our [technical documentation](https://github.com/boxysean/LTrainNotwork/blob/master/techdoc.md) including hardware configuration and specs.
+Read the [technical documentation](https://github.com/boxysean/LTrainNotwork/blob/master/techdoc.md) including hardware configuration and specs.
 
 Take this model and deploy your very own notwork!
 
